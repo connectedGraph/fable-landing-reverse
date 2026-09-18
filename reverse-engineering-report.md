@@ -184,11 +184,32 @@ round1 的 `semantic-rename.js` 有意只覆盖高置信度作用域，并把无
 当前语义产物中的 engine 和 React component **已清除全部单字母 binding**（引擎变量声明与函数参数均为 0 残留）。验证链全部通过：
 
 - `node --check` 通过；
+- **TDZ 校验**（`tools/check-tdz.js`：找出同块内 `let/const` 在声明前被引用的情况）通过 —— 见下方"验证盲区"；
 - engine AST 结构归一化比较 `equal=true`（忽略标识符名、位置和格式差异）；
 - 树生成器 seed 0/1/42/123456789/0xffffffff 的 positions/normals/colors/flex/uvs/indices 逐项相等；
 - 浏览器渲染对比：round2 与 round1 同条件 1440×1000 截图，平均像素差约 2/255（动画帧时序差异，结构一致），hero 资源全部加载、无 JS 报错。
 
-由于没有 source map，语义名是基于数据流和调用关系恢复的学习标签，不等同于作者原始命名；`three-js.formatted.js` 保持原样，作为库依赖跳过语义改名。round2 曾修正 round1 遗留的一处误命名风险（树建环局部的 `vertexColor/vertexUv` 实为方向×半径），并拦截了一处同作用域重名（`resize()` 的 width 变量）与一处遮蔽导致的自身赋值（`arrivalWingFold` 局部遮蔽外层）。
+### 验证盲区（2026-09-19 发现并修复）
+
+把引擎拼成独立 bundle 供站点使用时，浏览器抛 `ReferenceError: Cannot access 'skeleton' before initialization`，
+`ready=false`（bird 加载中断）。根因是 round2 的一处重命名：
+
+```js
+for (let [skeleton, meshList] of skeletonMap) {   // 循环变量
+  let bones = skeleton.bones.slice(), ...          // ← 引用
+  let skeleton = new THREE.Skeleton(bones, ...);   // ← 同块内后声明的 let，遮蔽并触发 TDZ
+```
+
+这条 bug **前面三道验证全部漏过**：AST 结构等价比较忽略标识符名，所以"两个不同的绑定被改成同名"对它是
+不可见的；树生成器回归不经过这条代码路径；渲染像素差里树与天空占绝对主导，鸟这条分支失败只影响很小
+一块区域。教训是：**AST 等价只能证明"结构没变"，不能证明"改名后语义没变"**——必须补一条能感知
+作用域/TDZ 的检查。现在 `tools/check-tdz.js` 已加入验证链。
+
+另外两点：round1 版本这条 TDZ 是干净的，说明该 bug 由 round2 引入；round2 早期还修掉过一处同作用域重名
+（`resize()` 的 width 变量）与一处遮蔽自赋值（`arrivalWingFold`）。
+
+由于没有 source map，语义名是基于数据流和调用关系恢复的学习标签，不等同于作者原始命名；`three-js.formatted.js`
+保持原样，作为库依赖跳过语义改名。
 
 
 最终校验补充：React 装配层也已完成作用域级语义改名。engine 与 component 均通过 `node --check`；AST 结构归一化比较均为 `equal=true`；engine 树生成器五组 seed 的 geometry 数组逐项相等。

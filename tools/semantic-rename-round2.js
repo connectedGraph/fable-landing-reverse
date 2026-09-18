@@ -18,7 +18,7 @@ const parser = require('@babel/parser');
 const traverse = require('@babel/traverse').default;
 const generate = require('@babel/generator').default;
 
-const input = 'C:/Users/18086/Desktop/个人项目/fable-landing-reverse/extracted/fable-hero-engine.semantic.js';
+const input = 'C:/Users/18086/Desktop/个人项目/fable-landing-reverse/extracted/fable-hero-engine.semantic.round1.js';
 const output = 'C:/tmp/fable-hero-reverse/fable-hero-engine.semantic-round2.js';
 const source = fs.readFileSync(input, 'utf8');
 const ast = parser.parse(source, { sourceType: 'script' });
@@ -220,7 +220,7 @@ const bird = {
   1786: { f: 'wristBone' }, 1788: { m: 'wristIndex' }, 1789: { e: 'meshInfo' },
   1790: { t: 'skinIndexAttr' }, 1791: { a: 'skinWeightAttr' }, 1792: { o: 'vertexIndex' },
   1793: { r: 'slotIndex' }, 1795: { n: 'wristBlend' }, 1797: { i: 'origWeight' },
-  1798: { l: 'freeSlot' }, 1799: { e: 'influence' }, 1812: { c: 'skeleton' },
+  1798: { l: 'freeSlot' }, 1799: { e: 'influence' }, 1812: { c: 'rebuiltSkeleton' },
   1813: { e: 'mesh' },
   1816: { t: 'cloneGroup' }, 1817: { o: 'cloneRoot', e: 'sourceRoot' },
   1818: { t: 'cloneMap' }, 1819: { a: 'reverseCloneMap' }, 1820: { o: 'cloneRoot' },

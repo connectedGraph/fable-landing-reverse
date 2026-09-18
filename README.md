@@ -85,9 +85,14 @@ python -m http.server 4174 --directory dist-semantic
 | 验证 | 结果 |
 |---|---|
 | `node --check` | 通过 |
+| **TDZ 校验**（`tools/check-tdz.js`） | 通过 |
 | AST 结构等价（忽略标识符名/位置/格式，sha256 归一化比较） | `equal=true` |
 | 树生成器 seed 0/1/42/123456789/0xffffffff 的几何数组逐项相等 | 全部 `equal=true` |
 | 浏览器渲染对比（同条件 1440×1000 截图，语义版 vs 原始版） | 平均像素差约 2/255，仅动画帧时序差异 |
+
+> **验证盲区**：AST 结构等价比较忽略标识符名，因此"两个不同绑定被改成同名"这类错误对它是不可见的。
+> round2 就曾引入一处这样的 TDZ（`skeleton` 同名遮蔽），AST 等价与渲染像素差都没抓到，直到把引擎
+> 拼成独立 bundle 在浏览器里跑才暴露。`tools/check-tdz.js` 是为补这个洞加的。
 
 沿用同一条管线的另一篇方法论笔记：《压缩 JS 变量语义还原 (Minified JS Semantic Renaming)》
 —— 讲压缩（非混淆）JS 的 AST 作用域级语义还原、同行冲突处理、守卫与验证链。

@@ -1809,8 +1809,8 @@
               skinIndexAttr.needsUpdate = !0, skinWeightAttr.needsUpdate = !0;
             }
           }
-          let skeleton = new THREE.Skeleton(bones, boneInverses);
-          for (let mesh of meshList) mesh.bind(skeleton, mesh.bindMatrix);
+          let rebuiltSkeleton = new THREE.Skeleton(bones, boneInverses);
+          for (let mesh of meshList) mesh.bind(rebuiltSkeleton, mesh.bindMatrix);
         }
       }(gltf.scene), birdGroup.add(gltf.scene), birdActors.push(setupBirdActor(gltf.scene, 1)), birdCloneOpacity)) {
         let cloneGroup = new THREE.Group(),
