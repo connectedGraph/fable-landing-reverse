@@ -1,0 +1,803 @@
+(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push([
+  "object" == typeof document ? document.currentScript : void 0,
+  325846,
+  (e) => {
+    e.v({
+      canvas: "LaunchHero-module-scss-module__RCsuha__canvas",
+      credit: "LaunchHero-module-scss-module__RCsuha__credit",
+      date: "LaunchHero-module-scss-module__RCsuha__date",
+      drawn: "LaunchHero-module-scss-module__RCsuha__drawn",
+      dusk: "LaunchHero-module-scss-module__RCsuha__dusk",
+      "fx-el-in": "LaunchHero-module-scss-module__RCsuha__fx-el-in",
+      "fx-title-in": "LaunchHero-module-scss-module__RCsuha__fx-title-in",
+      "fx-wait": "LaunchHero-module-scss-module__RCsuha__fx-wait",
+      index: "LaunchHero-module-scss-module__RCsuha__index",
+      "index-leader": "LaunchHero-module-scss-module__RCsuha__index-leader",
+      "index-number": "LaunchHero-module-scss-module__RCsuha__index-number",
+      "index-row": "LaunchHero-module-scss-module__RCsuha__index-row",
+      "index-row-inner": "LaunchHero-module-scss-module__RCsuha__index-row-inner",
+      "launch-hero": "LaunchHero-module-scss-module__RCsuha__launch-hero",
+      look: "LaunchHero-module-scss-module__RCsuha__look",
+      looks: "LaunchHero-module-scss-module__RCsuha__looks",
+      morning: "LaunchHero-module-scss-module__RCsuha__morning",
+      night: "LaunchHero-module-scss-module__RCsuha__night",
+      on: "LaunchHero-module-scss-module__RCsuha__on",
+      "over-bird": "LaunchHero-module-scss-module__RCsuha__over-bird",
+      scene: "LaunchHero-module-scss-module__RCsuha__scene",
+      title: "LaunchHero-module-scss-module__RCsuha__title",
+      "title-claude": "LaunchHero-module-scss-module__RCsuha__title-claude",
+      "title-line": "LaunchHero-module-scss-module__RCsuha__title-line",
+      "title-line-second": "LaunchHero-module-scss-module__RCsuha__title-line-second",
+      unsupported: "LaunchHero-module-scss-module__RCsuha__unsupported",
+      words: "LaunchHero-module-scss-module__RCsuha__words",
+    });
+  },
+  823698,
+  (e) => {
+    "use strict";
+    var t = e.i(843476),
+      a = e.i(271645),
+      l = e.i(343794),
+      s = e.i(325846);
+    let i = ".".repeat(160),
+      n = {
+        host: s.default.scene,
+        canvas: s.default.canvas,
+        drawn: s.default.drawn,
+        overBird: s.default["over-bird"],
+        looks: s.default.looks,
+        look: s.default.look,
+        on: s.default.on,
+        night: s.default.night,
+        dusk: s.default.dusk,
+        morning: s.default.morning,
+        unsupported: s.default.unsupported,
+      };
+    e.s([
+      "default",
+      0,
+      function ({
+        modelName: o,
+        version: r,
+        companion: d,
+        date: u,
+        index: c,
+        assets: m = "/fx/hero/",
+        still: h = !1,
+        seed: _,
+        className: f,
+        ...p
+      }) {
+        let v = (0, a.useRef)(null),
+          g = (0, a.useRef)(null),
+          w = (0, a.useRef)(null),
+          y = (0, a.useRef)(null),
+          x = ["Claude", o, r].filter(Boolean).join(" "),
+          b = d && ["and", d.modelName, d.version].filter(Boolean).join(" "),
+          j = [x, b].filter(Boolean).join(" "),
+          N = ["Made with", o, r].filter(Boolean).join(" ");
+        return (
+          (0, a.useEffect)(() => {
+            let e = v.current;
+            if (!e) return;
+            document.fonts.ready.then(() => e.setAttribute("data-fx-ready", ""));
+            let t = (e) => {
+              let t = e.target;
+              t instanceof HTMLElement &&
+                ((t.style.animation = "none"), (t.style.filter = "none"), (t.style.opacity = "1"));
+            };
+            return (e.addEventListener("animationend", t, !0), () => e.removeEventListener("animationend", t, !0));
+          }, []),
+          (0, a.useEffect)(() => {
+            let t = v.current;
+            if (!t || h) return;
+            let a = !1,
+              l = null,
+              s = null,
+              i = () =>
+                (function (e, t, a, l) {
+                  let s = e.clientWidth,
+                    i = e.clientHeight;
+                  if (!s || !i) return null;
+                  let n = (t, a, l) => {
+                    if (!(t instanceof HTMLElement)) return [0, 0, 0, 0];
+                    let n = 0,
+                      o = 0,
+                      r = t;
+                    for (; r && r !== e;) ((n += r.offsetLeft), (o += r.offsetTop), (r = r.offsetParent));
+                    return [(n - a) / s, (o - l) / i, (n + t.offsetWidth + a) / s, (o + t.offsetHeight + l) / i];
+                  };
+                  return [n(t, 32, 18), n(a, 40, 22), n(l, 56, 30)];
+                })(t, g.current, w.current, y.current);
+            return (
+              e.A(43259).then(({ createFableHero: e }) => {
+                if (a || !(l = e(t, { assets: m, seed: _, classes: n, shelters: i() }))) return;
+                let o = () => {
+                  let e = i();
+                  e && l && !a && l.setShelters(...e);
+                };
+                ((s = new ResizeObserver(o)).observe(t), document.fonts.ready.then(o));
+              }),
+              () => {
+                ((a = !0), s?.disconnect(), l?.dispose());
+              }
+            );
+          }, [m, h, _]),
+          (0, t.jsxs)("header", {
+            ...p,
+            ref: v,
+            className: (0, l.default)(s.default["launch-hero"], f),
+            children: [
+              (0, t.jsxs)("div", {
+                className: s.default.words,
+                children: [
+                  u &&
+                    (0, t.jsx)("p", {
+                      ref: y,
+                      className: (0, l.default)("text-prehead-tracked", s.default.date),
+                      children: u,
+                    }),
+                  (0, t.jsxs)("h1", {
+                    ref: g,
+                    className: s.default.title,
+                    "aria-label": j,
+                    children: [
+                      (0, t.jsxs)("span", {
+                        className: s.default["title-line"],
+                        "aria-hidden": "true",
+                        children: [
+                          (0, t.jsx)("span", { className: s.default["title-claude"], children: ":Claude:" }),
+                          o && ` ${o}`,
+                          r && ` ${r}`,
+                        ],
+                      }),
+                      b &&
+                        (0, t.jsx)("span", {
+                          className: (0, l.default)(s.default["title-line"], s.default["title-line-second"]),
+                          "aria-hidden": "true",
+                          children: b,
+                        }),
+                    ],
+                  }),
+                  c.length > 0 &&
+                    (0, t.jsx)("nav", {
+                      ref: w,
+                      className: s.default.index,
+                      "aria-label": "Contents",
+                      children: c.map((e, a) =>
+                        (0, t.jsx)(
+                          "a",
+                          {
+                            href: e.target,
+                            className: s.default["index-row"],
+                            style: { "--fx-row": a },
+                            children: (0, t.jsxs)("span", {
+                              className: s.default["index-row-inner"],
+                              children: [
+                                (0, t.jsxs)("span", {
+                                  className: s.default["index-number"],
+                                  children: ["[", a + 1, "]"],
+                                }),
+                                (0, t.jsx)("span", {
+                                  className: s.default["index-leader"],
+                                  "aria-hidden": "true",
+                                  children: i,
+                                }),
+                                (0, t.jsx)("span", { children: e.label }),
+                              ],
+                            }),
+                          },
+                          a,
+                        ),
+                      ),
+                    }),
+                ],
+              }),
+              (0, t.jsx)("span", { className: s.default.credit, children: N }),
+            ],
+          })
+        );
+      },
+    ]);
+  },
+  122204,
+  (e) => {
+    e.v({
+      "is-active": "LaunchSideToc-module-scss-module__3hrKvq__is-active",
+      "is-dragging": "LaunchSideToc-module-scss-module__3hrKvq__is-dragging",
+      "is-visible": "LaunchSideToc-module-scss-module__3hrKvq__is-visible",
+      link: "LaunchSideToc-module-scss-module__3hrKvq__link",
+      list: "LaunchSideToc-module-scss-module__3hrKvq__list",
+      pill: "LaunchSideToc-module-scss-module__3hrKvq__pill",
+      "side-toc": "LaunchSideToc-module-scss-module__3hrKvq__side-toc",
+    });
+  },
+  990515,
+  (e) => {
+    "use strict";
+    var t = e.i(843476),
+      a = e.i(271645),
+      l = e.i(343794),
+      s = e.i(122204);
+    e.s([
+      "default",
+      0,
+      function ({ stations: e }) {
+        let [i, n] = (0, a.useState)(0),
+          [o, r] = (0, a.useState)(!1),
+          [d, u] = (0, a.useState)(),
+          [c, m] = (0, a.useState)(!1),
+          h = (0, a.useRef)([]),
+          _ = (0, a.useRef)(null),
+          f = (0, a.useRef)({ active: !1, moved: !1, startY: 0 });
+        (0, a.useEffect)(() => {
+          if (0 === e.length) return;
+          h.current = e.map((e) => document.querySelector(e.target));
+          let t = document.querySelector("footer"),
+            a = 0,
+            l = () => {
+              a = 0;
+              let e = _.current,
+                l = h.current.find(Boolean);
+              u(Math.max(96, (window.innerHeight - (e?.offsetHeight ?? 0)) / 2));
+              let s = !!l && l.getBoundingClientRect().top < 0.5 * window.innerHeight,
+                i = t ? t.getBoundingClientRect().top : 1 / 0;
+              r(s && i > 240);
+              let o = 0.4 * window.innerHeight,
+                d = 0;
+              (h.current.forEach((e, t) => {
+                e && e.getBoundingClientRect().top <= o && (d = t);
+              }),
+                n(d));
+            },
+            s = () => {
+              a || (a = requestAnimationFrame(l));
+            };
+          return (
+            l(),
+            window.addEventListener("scroll", s, { passive: !0 }),
+            window.addEventListener("resize", s),
+            () => {
+              (window.removeEventListener("scroll", s),
+                window.removeEventListener("resize", s),
+                cancelAnimationFrame(a));
+            }
+          );
+        }, [e]);
+        let p = (e) => {
+          (e.currentTarget.hasPointerCapture(e.pointerId) && e.currentTarget.releasePointerCapture(e.pointerId),
+            (f.current.active = !1),
+            m(!1));
+        };
+        return 0 === e.length
+          ? null
+          : (0, t.jsx)("nav", {
+              className: (0, l.default)(s.default["side-toc"], {
+                [s.default["is-visible"]]: o || c,
+                [s.default["is-dragging"]]: c,
+              }),
+              style: void 0 !== d ? { top: d } : void 0,
+              "aria-label": "Contents",
+              children: (0, t.jsx)("ol", {
+                ref: _,
+                className: s.default.list,
+                onPointerDown: (e) => {
+                  0 === e.button && (f.current = { active: !0, moved: !1, startY: e.clientY });
+                },
+                onPointerMove: (e) => {
+                  let t = f.current;
+                  !t.active ||
+                    (!t.moved && 4 > Math.abs(e.clientY - t.startY)) ||
+                    (t.moved || ((t.moved = !0), m(!0), e.currentTarget.setPointerCapture(e.pointerId)),
+                    ((e) => {
+                      let t,
+                        a,
+                        l,
+                        s = _.current;
+                      if (!s) return;
+                      let i = s.getBoundingClientRect(),
+                        n = Math.min(1, Math.max(0, (e - i.top) / i.height)),
+                        { start: o, end: r } =
+                          ((t = h.current.find(Boolean)),
+                          (a = document.querySelector("footer")),
+                          {
+                            start: (l = t ? t.getBoundingClientRect().top + window.scrollY - 96 : 0),
+                            end: Math.max(
+                              l,
+                              a
+                                ? a.getBoundingClientRect().top + window.scrollY - window.innerHeight
+                                : document.body.scrollHeight - window.innerHeight,
+                            ),
+                          });
+                      window.scrollTo({ top: o + n * (r - o), behavior: "auto" });
+                    })(e.clientY));
+                },
+                onPointerUp: p,
+                onPointerCancel: p,
+                children: e.map((e, a) =>
+                  (0, t.jsx)(
+                    "li",
+                    {
+                      children: (0, t.jsx)("a", {
+                        href: e.target,
+                        className: (0, l.default)(s.default.link, a === i && s.default["is-active"]),
+                        draggable: !1,
+                        onDragStart: (e) => e.preventDefault(),
+                        onClick: (e) => {
+                          f.current.moved && e.preventDefault();
+                        },
+                        children: (0, t.jsx)("span", { className: s.default.pill, children: e.label }),
+                      }),
+                    },
+                    e.target,
+                  ),
+                ),
+              }),
+            });
+      },
+    ]);
+  },
+  742312,
+  (e) => {
+    e.v({
+      "arrow-button": "MediaGalleryView-module-scss-module__6QZEyW__arrow-button",
+      "arrow-controls": "MediaGalleryView-module-scss-module__6QZEyW__arrow-controls",
+      "arrow-next": "MediaGalleryView-module-scss-module__6QZEyW__arrow-next",
+      "arrow-prev": "MediaGalleryView-module-scss-module__6QZEyW__arrow-prev",
+      "carousel-controls": "MediaGalleryView-module-scss-module__6QZEyW__carousel-controls",
+      counter: "MediaGalleryView-module-scss-module__6QZEyW__counter",
+      "media-content": "MediaGalleryView-module-scss-module__6QZEyW__media-content",
+      "media-gallery": "MediaGalleryView-module-scss-module__6QZEyW__media-gallery",
+      "media-gallery-container": "MediaGalleryView-module-scss-module__6QZEyW__media-gallery-container",
+      "media-gallery-wrapper": "MediaGalleryView-module-scss-module__6QZEyW__media-gallery-wrapper",
+      "media-image": "MediaGalleryView-module-scss-module__6QZEyW__media-image",
+      "media-item": "MediaGalleryView-module-scss-module__6QZEyW__media-item",
+      "media-video": "MediaGalleryView-module-scss-module__6QZEyW__media-video",
+    });
+  },
+  714410,
+  (e) => {
+    e.v({
+      caption: "LaunchVideoSwitcher-module-scss-module__pNlP9a__caption",
+      embed: "LaunchVideoSwitcher-module-scss-module__pNlP9a__embed",
+      frame: "LaunchVideoSwitcher-module-scss-module__pNlP9a__frame",
+      pagination: "LaunchVideoSwitcher-module-scss-module__pNlP9a__pagination",
+      "pagination-button": "LaunchVideoSwitcher-module-scss-module__pNlP9a__pagination-button",
+      "pagination-count": "LaunchVideoSwitcher-module-scss-module__pNlP9a__pagination-count",
+      play: "LaunchVideoSwitcher-module-scss-module__pNlP9a__play",
+      poster: "LaunchVideoSwitcher-module-scss-module__pNlP9a__poster",
+      "video-switcher": "LaunchVideoSwitcher-module-scss-module__pNlP9a__video-switcher",
+    });
+  },
+  797276,
+  (e) => {
+    e.v({
+      anchor: "LaunchBody-module-scss-module__nlZCva__anchor",
+      "launch-body": "LaunchBody-module-scss-module__nlZCva__launch-body",
+    });
+  },
+  582826,
+  (e) => {
+    "use strict";
+    var t = e.i(843476),
+      a = e.i(343794),
+      l = e.i(271645),
+      s = e.i(336254),
+      i = e.i(173154),
+      n = e.i(536988),
+      o = e.i(645533),
+      r = e.i(706586),
+      d = e.i(45246),
+      u = e.i(742312);
+    function c({ figures: e, className: s, ...i }) {
+      let {
+          currentIndex: r,
+          isTablet: h,
+          sliderRef: _,
+          cardRefs: f,
+          firstCardRef: p,
+          handlePrevious: v,
+          handleNext: g,
+        } = (0, d.useCarouselScroll)({ itemCount: e.length }),
+        [w, y] = (0, l.useState)(void 0);
+      return ((0, l.useEffect)(() => {
+        let e = f.current[r];
+        if (!h || !e) return void y(void 0);
+        y(e.offsetHeight);
+        let t = new ResizeObserver(() => {
+          y(e.offsetHeight);
+        });
+        return (t.observe(e), () => t.disconnect());
+      }, [r, h, f]),
+      0 === e.length)
+        ? null
+        : (0, t.jsxs)("div", {
+            ...i,
+            className: (0, a.default)(u.default["media-gallery-wrapper"], s),
+            children: [
+              (0, t.jsx)("div", {
+                className: u.default["media-gallery-container"],
+                style: w ? { height: `${w}px` } : void 0,
+                children: (0, t.jsx)("div", {
+                  className: u.default["media-gallery"],
+                  ref: _,
+                  children: e.map((e, a) =>
+                    (0, t.jsxs)(
+                      "figure",
+                      {
+                        className: u.default["media-item"],
+                        ref: (e) => {
+                          ((f.current[a] = e), 0 === a && (p.current = e));
+                        },
+                        children: [
+                          (0, t.jsx)("div", {
+                            className: u.default["media-content"],
+                            children:
+                              "image" === e.kind
+                                ? (0, t.jsx)(n.default, {
+                                    src: e.src,
+                                    alt: e.alt,
+                                    width: e.width,
+                                    height: e.height,
+                                    className: u.default["media-image"],
+                                  })
+                                : (0, t.jsx)("div", {
+                                    className: u.default["media-video"],
+                                    children: (0, t.jsx)(m, { figure: e }),
+                                  }),
+                          }),
+                          e.caption && (0, t.jsx)("figcaption", { className: "caption", children: e.caption }),
+                        ],
+                      },
+                      a,
+                    ),
+                  ),
+                }),
+              }),
+              e.length > 1 &&
+                h &&
+                (0, t.jsxs)("div", {
+                  className: (0, a.default)(u.default["carousel-controls"], "body-3"),
+                  children: [
+                    (0, t.jsxs)("div", {
+                      className: u.default.counter,
+                      children: [
+                        (0, t.jsx)("span", { children: String(r + 1).padStart(2, "0") }),
+                        " /",
+                        " ",
+                        String(e.length).padStart(2, "0"),
+                      ],
+                    }),
+                    (0, t.jsxs)("div", {
+                      className: u.default["arrow-controls"],
+                      children: [
+                        (0, t.jsx)("button", {
+                          className: (0, a.default)(u.default["arrow-button"], u.default["arrow-prev"]),
+                          onClick: v,
+                          disabled: 0 === r,
+                          "aria-label": "Previous media",
+                          children: (0, t.jsx)(o.IconCaretDown, { height: 16, width: 16 }),
+                        }),
+                        (0, t.jsx)("button", {
+                          className: (0, a.default)(u.default["arrow-button"], u.default["arrow-next"]),
+                          onClick: g,
+                          disabled: r === e.length - 1,
+                          "aria-label": "Next media",
+                          children: (0, t.jsx)(o.IconCaretDown, { height: 16, width: 16 }),
+                        }),
+                      ],
+                    }),
+                  ],
+                }),
+            ],
+          });
+    }
+    function m({ figure: e }) {
+      return (0, t.jsx)(r.default, {
+        _type: "video",
+        url: e.src,
+        embedUrl: e.embedUrl,
+        autoplay: e.autoplay,
+        muted: e.muted,
+        loop: e.loop,
+        showControls: e.showControls,
+        thumbnail: e.poster && { url: e.poster.src, width: e.poster.width, height: e.poster.height },
+      });
+    }
+    var h = e.i(106123);
+    function _(e) {
+      var t, a;
+      let l,
+        s,
+        i,
+        n,
+        o,
+        r = e?.media;
+      return r?.mediaType === "image"
+        ? ((t = r.image),
+          (l = t?.url?.trim()),
+          (s = t?.width),
+          (i = t?.height),
+          l && "number" == typeof s && "number" == typeof i
+            ? {
+                kind: "image",
+                src: l,
+                alt: t?.description?.trim() || "Media gallery image",
+                width: s,
+                height: i,
+                caption: f(t?.caption),
+              }
+            : null)
+        : r?.mediaType === "video"
+          ? ((a = r.video),
+            (n = a?.url?.trim() || void 0),
+            (o = a?.embedUrl?.trim() || void 0),
+            n || o
+              ? {
+                  kind: "video",
+                  src: n,
+                  embedUrl: o,
+                  poster: (function (e) {
+                    let t = e?.url?.trim(),
+                      a = e?.width,
+                      l = e?.height;
+                    if (t && "number" == typeof a && "number" == typeof l) return { src: t, width: a, height: l };
+                  })(a?.thumbnail),
+                  autoplay: a?.autoplay ?? void 0,
+                  muted: a?.muted ?? void 0,
+                  loop: a?.loop ?? void 0,
+                  showControls: a?.showControls ?? void 0,
+                  caption: f(a?.caption),
+                }
+              : null)
+          : null;
+    }
+    function f(e) {
+      if (Array.isArray(e) && 0 !== e.length)
+        return (0, t.jsx)(h.default, {
+          stripBlock: !0,
+          marks: { sup: ({ children: e }) => (0, t.jsx)("sup", { className: "caption", children: e }) },
+          value: e,
+        });
+    }
+    function p({ data: e }) {
+      let a,
+        l,
+        s =
+          0 === (l = (Array.isArray((a = e?.items)) ? a : []).map(_).filter((e) => null !== e)).length
+            ? null
+            : { figures: l };
+      return s ? (0, t.jsx)(c, { ...s }) : null;
+    }
+    var v = e.i(965248),
+      g = e.i(657688),
+      w = e.i(714410);
+    function y({ videos: e, className: s, ...i }) {
+      let n,
+        [o, r] = (0, l.useState)(0),
+        [d, u] = (0, l.useState)(!1),
+        [c, m] = (0, l.useState)(null),
+        h = (0, l.useRef)(void 0);
+      if (((0, l.useEffect)(() => () => window.clearTimeout(h.current), []), 0 === e.length)) return null;
+      let _ = e.length,
+        f = e[o],
+        p = (e) => {
+          let t = Math.min(_ - 1, Math.max(0, e));
+          t !== (c ?? o) &&
+            (m(t),
+            u(!1),
+            window.clearTimeout(h.current),
+            (h.current = window.setTimeout(() => {
+              (r(t), m(null));
+            }, 180)));
+        };
+      return (0, t.jsxs)("figure", {
+        ...i,
+        className: (0, a.default)(w.default["video-switcher"], s),
+        children: [
+          _ > 1 &&
+            (0, t.jsxs)("div", {
+              className: w.default.pagination,
+              children: [
+                (0, t.jsx)("button", {
+                  type: "button",
+                  className: w.default["pagination-button"],
+                  onClick: () => p((c ?? o) - 1),
+                  disabled: (c ?? o) === 0,
+                  children: "Previous",
+                }),
+                (0, t.jsxs)("p", { className: w.default["pagination-count"], children: [(c ?? o) + 1, " of ", _] }),
+                (0, t.jsx)("button", {
+                  type: "button",
+                  className: w.default["pagination-button"],
+                  onClick: () => p((c ?? o) + 1),
+                  disabled: (c ?? o) === _ - 1,
+                  children: "Next",
+                }),
+              ],
+            }),
+          (0, t.jsx)("div", {
+            className: w.default.frame,
+            "data-swapping": null !== c ? "" : void 0,
+            children: d
+              ? (0, t.jsx)("iframe", {
+                  className: w.default.embed,
+                  src:
+                    ((n = f.youtubeId),
+                    `https://www.youtube-nocookie.com/embed/${n}?autoplay=1&rel=0&modestbranding=1&playsinline=1`),
+                  title: f.caption ?? "Video",
+                  allow: "autoplay; encrypted-media; picture-in-picture",
+                  allowFullScreen: !0,
+                })
+              : (0, t.jsxs)(t.Fragment, {
+                  children: [
+                    f.animatedPosterUrl
+                      ? (0, t.jsx)(
+                          "video",
+                          {
+                            className: w.default.poster,
+                            src: f.animatedPosterUrl,
+                            poster: f.poster?.url,
+                            autoPlay: !0,
+                            loop: !0,
+                            muted: !0,
+                            playsInline: !0,
+                          },
+                          f.animatedPosterUrl,
+                        )
+                      : f.poster &&
+                        (0, t.jsx)(g.default, {
+                          className: w.default.poster,
+                          src: f.poster.url,
+                          alt: f.poster.alt,
+                          width: f.poster.width ?? 1600,
+                          height: f.poster.height ?? 900,
+                        }),
+                    (0, t.jsx)("button", {
+                      type: "button",
+                      className: w.default.play,
+                      onClick: () => u(!0),
+                      "aria-label": f.caption ? `Play: ${f.caption}` : "Play video",
+                      children: (0, t.jsx)("svg", {
+                        viewBox: "0 0 24 24",
+                        width: "24",
+                        height: "24",
+                        "aria-hidden": "true",
+                        children: (0, t.jsx)("path", { d: "M7 4 L20 12 L7 20 Z" }),
+                      }),
+                    }),
+                  ],
+                }),
+          }),
+          (0, t.jsx)("figcaption", {
+            className: w.default.caption,
+            "data-swapping": null !== c ? "" : void 0,
+            children: f.caption,
+          }),
+        ],
+      });
+    }
+    var x = e.i(797276);
+    let b = {
+      manateeVideoSwitcher: ({ value: e }) => {
+        var a;
+        let l;
+        return (0, t.jsx)("div", {
+          className: i.default["media-column"],
+          children: (0, t.jsx)(y, {
+            videos:
+              ((a = e),
+              Array.isArray((l = a?.videos))
+                ? l
+                    .map((e) => {
+                      let t = e?.youtubeId?.trim();
+                      return t
+                        ? {
+                            youtubeId: t,
+                            poster: e?.poster?.url
+                              ? {
+                                  url: e.poster.url,
+                                  alt: e.poster.alt ?? "",
+                                  width: e.poster.width,
+                                  height: e.poster.height,
+                                }
+                              : void 0,
+                            animatedPosterUrl: e?.animatedPosterUrl?.trim() || void 0,
+                            caption: e?.caption?.trim() || void 0,
+                          }
+                        : null;
+                    })
+                    .filter((e) => null !== e)
+                : []),
+          }),
+        });
+      },
+      mediaGallery: ({ value: e }) => {
+        let l = Array.isArray(e?.items) && e.items.length > 2;
+        return (0, t.jsx)("div", {
+          className: (0, a.default)(i.default["media-column"], l && i.default["full-page"]),
+          children: (0, t.jsx)(p, { data: e }),
+        });
+      },
+    };
+    e.s(
+      [
+        "default",
+        0,
+        function ({ body: e }) {
+          let { headingIds: a, adoptedMarkers: i } = (0, l.useMemo)(() => {
+              let t, a;
+              return (
+                (t = {}),
+                (a = new Set()),
+                e.forEach((l, s) => {
+                  if (l?._type !== "manateeNavMarker") return;
+                  let i = l.anchor?.current?.trim();
+                  if (!l._key || !i) return;
+                  let n = e[s + 1];
+                  n?._type === "block" &&
+                    "string" == typeof n.style &&
+                    v.HEADING_STYLES.has(n.style) &&
+                    n._key &&
+                    ((t[n._key] = i), a.add(l._key));
+                }),
+                { headingIds: t, adoptedMarkers: a }
+              );
+            }, [e]),
+            n = (0, l.useMemo)(
+              () => ({
+                ...b,
+                manateeNavMarker: ({ value: e }) => {
+                  let a = e?.anchor?.current?.trim();
+                  return !a || (e._key && i.has(e._key))
+                    ? null
+                    : (0, t.jsx)("span", { id: a, className: x.default.anchor });
+                },
+              }),
+              [i],
+            );
+          return (0, t.jsx)(s.default, {
+            serifHeadings: !0,
+            className: x.default["launch-body"],
+            types: n,
+            headingIds: a,
+            body: e,
+          });
+        },
+      ],
+      582826,
+    );
+  },
+  216495,
+  (e) => {
+    e.v((t) =>
+      Promise.all(["static/chunks/3ikv1zfcxpxsn.js", "static/chunks/2gmlunbgaqe4d.js"].map((t) => e.l(t))).then(() =>
+        t(520697),
+      ),
+    );
+  },
+  296349,
+  (e) => {
+    e.v((t) => Promise.all(["static/chunks/24-f42_ev31o0.js"].map((t) => e.l(t))).then(() => t(883495)));
+  },
+  640408,
+  (e) => {
+    e.v((t) => Promise.all(["static/chunks/0puoh-ufu3dvd.js"].map((t) => e.l(t))).then(() => t(289374)));
+  },
+  808612,
+  (e) => {
+    e.v((t) => Promise.all(["static/chunks/1vb6c7tw6e3-a.js"].map((t) => e.l(t))).then(() => t(218913)));
+  },
+  43259,
+  (e) => {
+    e.v((t) =>
+      Promise.all(["static/chunks/14c8frmb4u5hu.js", "static/chunks/43wzyymewd7k8.js"].map((t) => e.l(t))).then(() =>
+        t(222197),
+      ),
+    );
+  },
+  52572,
+  (e) => {
+    e.v((t) => Promise.all(["static/chunks/11hf-moec3kv_.js"].map((t) => e.l(t))).then(() => t(665147)));
+  },
+]);
